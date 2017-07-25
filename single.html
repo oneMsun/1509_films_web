@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>电影详情</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- pop-up -->
+<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //pop-up -->
+<link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" type="text/css" href="css/zoomslider.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link href="css/font-awesome.css" rel="stylesheet">
+<script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
+<!--/web-fonts-->
+<link href='http://fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href="video-js/video-js.css" rel="stylesheet" type="text/css">
+<script src="video-js/video.js"></script>
+<link href="css/loading_svg.css" rel="stylesheet" type="text/css">
+<!--//web-fonts-->
+<style media="screen">
+	.movies_Box{
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.9);
+		position: fixed;
+		top:0;
+		left: 0;
+		z-index: 99;
+		display: none;
+	}
+	#movie_content{
+		position: absolute;
+		top: 50px;
+		left: 10%;
+	}
+	#shut_movie_btn{
+		display: block;
+		width: 33px;
+		height: 33px;
+		background: url(images/shut.png) no-repeat;
+		position: absolute;
+		right: -34px;
+		top: -32px;
+		z-index: 999;
+		transition: 0.5s all ease;
+
+	}
+	#shut_movie_btn:hover{
+		-webkit-transition: 0.5s all ease;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+
+</style>
+</head>
+<body>
+	<div class="loading" id="loading">
+		<svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<g id="circle" class="g-circles g-circles--v1">
+					<circle id="12" transform="translate(35, 16.698730) rotate(-30) translate(-35, -16.698730) " cx="35" cy="16.6987298" r="10"></circle>
+					<circle id="11" transform="translate(16.698730, 35) rotate(-60) translate(-16.698730, -35) " cx="16.6987298" cy="35" r="10"></circle>
+					<circle id="10" transform="translate(10, 60) rotate(-90) translate(-10, -60) " cx="10" cy="60" r="10"></circle>
+					<circle id="9" transform="translate(16.698730, 85) rotate(-120) translate(-16.698730, -85) " cx="16.6987298" cy="85" r="10"></circle>
+					<circle id="8" transform="translate(35, 103.301270) rotate(-150) translate(-35, -103.301270) " cx="35" cy="103.30127" r="10"></circle>
+					<circle id="7" cx="60" cy="110" r="10"></circle>
+					<circle id="6" transform="translate(85, 103.301270) rotate(-30) translate(-85, -103.301270) " cx="85" cy="103.30127" r="10"></circle>
+					<circle id="5" transform="translate(103.301270, 85) rotate(-60) translate(-103.301270, -85) " cx="103.30127" cy="85" r="10"></circle>
+					<circle id="4" transform="translate(110, 60) rotate(-90) translate(-110, -60) " cx="110" cy="60" r="10"></circle>
+					<circle id="3" transform="translate(103.301270, 35) rotate(-120) translate(-103.301270, -35) " cx="103.30127" cy="35" r="10"></circle>
+					<circle id="2" transform="translate(85, 16.698730) rotate(-150) translate(-85, -16.698730) " cx="85" cy="16.6987298" r="10"></circle>
+					<circle id="1" cx="60" cy="10" r="10"></circle>
+			</g>
+			<use xlink:href="#circle" class="use"/>
+		</svg>
+		<p style="color:#fff">LOADING...</p>
+	</div>
+<div class="movies_Box">
+	<!-- <a href="javascript:void(0)" id="shut_movie_btn"></a> -->
+	<div style="width:80%;margin:30px auto" id="movie_content">
+		<a href="javascript:void(0)" id="shut_movie_btn"></a>
+	  <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="100%" height="500"
+	      data-setup="{}"
+	      >
+
+	    <source src="audio/movie_02.mp4" type='video/mp4' />
+	  </video>
+	</div>
+	<div style="text-align:center;clear:both"></div>
+</div>
+<!--/main-header-->
+  <!--/banner-section-->
+	<div id="demo-1" class="banner-inner">
+	 <div class="banner-inner-dott">
+		<!--/header-w3l-->
+			   <div class="header-w3-agileits" id="home">
+			     <div class="inner-header-agile part2">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1><a  href="index.html"><span>1905</span>电影网 <span></a></h1>
+					</div>
+					<!-- navbar-header -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+							<li class="active"><a href="index.html">首页</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">类型 <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3" id="genre_list">
+									<li>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="javascript:void(0)">科幻</a></li>
+											<li><a href="javascript:void(0)">剧情</a></li>
+											<li><a href="javascript:void(0)">喜剧</a></li>
+											<li><a href="javascript:void(0)">爱情</a></li>
+											<li><a href="javascript:void(0)">犯罪</a></li>
+											<li><a href="javascript:void(0)">冒险</a></li>
+											<li><a href="javascript:void(0)">战争</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="javascript:void(0)">悬疑</a></li>
+											<li><a href="javascript:void(0)">恐怖</a></li>
+											<li><a href="javascript:void(0)">奇幻</a></li>
+											<li><a href="javascript:void(0)">动画</a></li>
+											<li><a href="javascript:void(0)">惊悚</a></li>
+											<li><a href="javascript:void(0)">记录</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="javascript:void(0)">音乐</a></li>
+											<li><a href="javascript:void(0)">歌舞</a></li>
+											<li><a href="javascript:void(0)">历史</a></li>
+											<li><a href="javascript:void(0)">传记</a></li>
+											<li><a href="javascript:void(0)">武侠</a></li>
+											<li><a href="javascript:void(0)">伦理</a></li>
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+									</li>
+								</ul>
+							</li>
+							<li><a href="news.html">影讯</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">地区 <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3" id="countries_list">
+									<li>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="javascript:void(0)">内地</a></li>
+												<li><a href="javascript:void(0)">香港</a></li>
+												<li><a href="javascript:void(0)">日韩</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="javascript:void(0)">印度</a></li>
+												<li><a href="javascript:void(0)">法国</a></li>
+												<li><a href="javascript:void(0)">台湾</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="javascript:void(0)">欧美</a></li>
+												<li><a href="javascript:void(0)">泰国</a></li>
+											  <li><a href="javascript:void(0)">其他</a></li>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+								</ul>
+							</li>
+							    <li><a href="contact.html">联系我们</a></li>
+						</ul>
+
+					</div>
+					<div class="clearfix"> </div>
+				</nav>
+					<div class="w3ls_search">
+									<div class="cd-main-header">
+										<ul class="cd-header-buttons">
+											<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+										</ul>
+									</div>
+									<div id="cd-search" class="cd-search">
+										<input name="" type="" placeholder="请输入要搜索内容">
+									</div>
+								</div>
+
+			</div>
+
+			   </div>
+		<!--//header-w3l-->
+		</div>
+    </div>
+  <!--/banner-section-->
+ <!--//main-header-->
+	         <!--/banner-bottom-->
+			</div>
+			<!--//banner-bottom-->
+		     <!-- Modal1 -->
+
+				<!-- //Modal1 -->
+				  <!-- Modal1 -->
+					<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" >
+
+							<div class="modal-dialog">
+							<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4>Register</h4>
+										<div class="login-form">
+											<form action="#" method="post">
+											    <input type="text" name="name" placeholder="Name" required="">
+												<input type="email" name="email" placeholder="E-mail" required="">
+												<input type="password" name="password" placeholder="Password" required="">
+												<input type="password" name="conform password" placeholder="Confirm Password" required="">
+												<div class="signin-rit">
+														<span class="agree-checkbox">
+														<label class="checkbox"><input type="checkbox" name="checkbox">I agree to your <a class="w3layouts-t" href="#" target="_blank">Terms of Use</a> and <a class="w3layouts-t" href="#" target="_blank">Privacy Policy</a></label>
+													</span>
+												</div>
+												<div class="tp">
+													<input type="submit" value="REGISTER NOW">
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				<!-- //Modal1 -->
+						<!-- breadcrumb -->
+	<div class="w3_breadcrumb">
+	<div class="breadcrumb-inner">
+			<ul>
+				<li><a href="index.html">首页</a><i>//</i></li>
+
+				<li>详情</li>
+			</ul>
+		</div>
+	</div>
+<!-- //breadcrumb -->
+			<!--/content-inner-section-->
+				<div class="w3_content_agilleinfo_inner">
+						<div class="agile_featured_movies">
+				            <div class="inner-agile-w3l-part-head">
+					            <h3 class="w3l-inner-h-title" id="movie_title">Single Page</h3>
+											<p class="w3ls_head_para" id="movie_title_en">Add short Description</p>
+							</div>
+							   <div class="latest-news-agile-info">
+								   <div class="col-md-8 latest-news-agile-left-content" >
+										 	<div id="moive_cotent">
+
+										 	</div>
+
+											<button type="button" name="button" id="movie_btn" style="width:100%;padding:15px;background-color:#c80000;color:#fff;border:none;outline:0;float:left;margin-top:12px;">点击播放</button>
+								   </div>
+
+
+
+								   <div class="col-md-4 latest-news-agile-right-content">
+
+										<h4 class="side-t-w3l-agile">最新 <span style="color:#fff;">电影</span></h3>
+										<div class="video_agile_player sidebar-player">
+										            <div class="video-grid-single-page-agileits">
+														<div data-video="fNKUgX8PhMA" id="video1"> <img src="images/11.jpg" alt="" class="img-responsive"> <div id="play"></div></div>
+													</div>
+
+
+										        <div class="player-text side-bar-info">
+												<p class="fexi_header">魔兽世界 </p>
+												<p class="fexi_header_para"><span class="conjuring_w3">故事情节<label>:</label></span>这是一个人类和兽人共存，和谐相处，互不侵犯的世界。人类生活在艾泽拉斯大陆中，兽人则在德拉诺劳作繁衍。</p>
+												<p class="fexi_header_para"><span>上映时间<label>:</label></span>Feb 3, 2016 </p>
+												<p class="fexi_header_para">
+													<span>类型<label>:</label> </span>
+													<a href="javascript:void(0)">动作</a> |
+													<a href="javascript:void(0)">科幻</a> |
+													<a href="javascript:void(0)">恐怖</a>
+												</p>
+												<p class="fexi_header_para fexi_header_para1"><span>电影星级<label>:</label></span>
+													<a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+													<a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+												</p>
+											</div>
+
+										    </div>
+											<div class="clearfix"> </div>
+											<div class="agile-info-recent">
+											<h4 class="side-t-w3l-agile">热映 <span style="color:#fff">电影</span></h4>
+											<div class="w3ls-recent-grids" >
+												<div class="w3l-recent-grid">
+													<div class="wom">
+														<a href="single.html?id=25824686"><img src="images/list_1.jpg" alt=" " class="img-responsive"  width = "100px"  style="float:left;margin-top:-10px;"></a>
+													</div>
+													<div class="wom-right" >
+														<h5><a href="single.html?id=25824686" >变形金刚5最后的骑士</a></h5>
+														<p style="height:67px;overflow:hidden;text-overflow:ellipsis;margin-top:7px;">人类和变形金刚开战，擎天柱失踪，拯救未来的关键就埋藏在历史的秘密之中，那是地球上变形金刚的历史</p>
+															<ul class="w3l-sider-list">
+																<li><i class="fa fa-clock-o" aria-hidden="true"></i>2017</li>
+																<li><i class="fa fa-eye" aria-hidden="true"></i> 2602</li>
+															</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="w3l-recent-grid">
+													<div class="wom">
+														<a href="single.html?id=6311303"><img src="images/list_2.jpg" alt=" " class="img-responsive"  width = "100px"  style="float:left;margin-top:-10px;"></a>
+													</div>
+													<div class="wom-right" >
+														<h5><a href="single.html?id=6311303" >加勒比海盗5：死无对证</a></h5>
+														<p style="height:67px;overflow:hidden;text-overflow:ellipsis;margin-top:7px;">沉船湾之战20年后。 男孩亨利）随英国海军出航寻找被聚魂棺诅咒的父亲“深海阎王”威尔·特纳</p>
+															<ul class="w3l-sider-list">
+																<li><i class="fa fa-clock-o" aria-hidden="true"></i>2017</li>
+																<li><i class="fa fa-eye" aria-hidden="true"></i> 2602</li>
+															</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="w3l-recent-grid">
+													<div class="wom">
+														<a href="single.html?id=20451290"><img src="images/list_3.jpg" alt=" " class="img-responsive"  width = "100px"  style="float:left;margin-top:-10px;"></a>
+													</div>
+													<div class="wom-right" >
+														<h5><a href="single.html?id=20451290" >新木乃伊</a></h5>
+														<p style="height:67px;overflow:hidden;text-overflow:ellipsis;margin-top:7px;">木乃伊公主阿玛内特穿梭到现代伦敦，企图寻回她曾被夺去的一切。 本片由动作巨星汤姆·克鲁斯主演</p>
+															<ul class="w3l-sider-list">
+																<li><i class="fa fa-clock-o" aria-hidden="true"></i>2017</li>
+																<li><i class="fa fa-eye" aria-hidden="true"></i> 2602</li>
+															</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+											</div>
+										</div>
+
+							       </div>
+								   <div class="clearfix"></div>
+							   </div>
+
+						</div>
+				</div>
+			<!--//content-inner-section-->
+
+
+	<!--/footer-bottom-->
+	<div class="contact-w3ls" id="contact">
+		<div class="footer-w3lagile-inner">
+				<div class="footer-grids w3-agileits">
+
+				<h3 class="text-center follow" style="padding:20px 0 0 0;">联系我们 </h3>
+					<ul class="social-icons1 agileinfo">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+
+				</div>
+
+		</div>
+		<div class="w3agile_footer_copy">
+					<p>Copyright &copy; 版权归宋文鑫个人所有</p>
+		</div>
+	<a href="#home" id="toTop" class="scroll" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+<script src="js/jquery-1.11.1.min.js"></script>
+	<!-- Dropdown-Menu-JavaScript -->
+			<script>
+				$(document).ready(function(){
+					$(".dropdown").hover(
+						function() {
+							$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+							$(this).toggleClass('open');
+						},
+						function() {
+							$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+							$(this).toggleClass('open');
+						}
+					);
+				});
+			</script>
+		<!-- //Dropdown-Menu-JavaScript -->
+		<!-- search-jQuery -->
+				<script src="js/main.js"></script>
+
+			<!-- <script src="js/simplePlayer.js"></script>
+			<script>
+				$("document").ready(function() {
+					$("#video").simplePlayer();
+				});
+			</script>
+			<script>
+				$("document").ready(function() {
+					$("#video1").simplePlayer();
+				});
+			</script>
+			<script>
+				$("document").ready(function() {
+					$("#video2").simplePlayer();
+				});
+			</script>
+				<script>
+				$("document").ready(function() {
+					$("#video3").simplePlayer();
+				});
+			</script>
+			<script>
+				$("document").ready(function() {
+					$("#video4").simplePlayer();
+				});
+			</script>
+			<script>
+				$("document").ready(function() {
+					$("#video5").simplePlayer();
+				});
+			</script>
+			<script>
+				$("document").ready(function() {
+					$("#video6").simplePlayer();
+				});
+			</script> -->
+			<!-- <script>
+				$("document").ready(function() {
+					$("#video6").simplePlayer();
+				});
+			</script> -->
+
+			<!-- pop-up-box -->
+		<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+	<!--//pop-up-box -->
+
+			<div id="small-dialog1" class="mfp-hide">
+		<iframe src=""></iframe>
+	</div>
+	<div id="small-dialog2" class="mfp-hide">
+		<iframe src=""></iframe>
+	</div>
+	<script>
+		$(document).ready(function() {
+		$('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
+			type: 'inline',
+			fixedContentPos: false,
+			fixedBgPos: true,
+			overflowY: 'auto',
+			closeBtnInside: true,
+			preloader: false,
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+
+		});
+	</script>
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+$(document).ready(function () {
+$('#horizontalTab').easyResponsiveTabs({
+type: 'default', //Types: default, vertical, accordion
+width: 'auto', //auto or any width like 600px
+fit: true,   // 100% fit in a container
+closed: 'accordion', // Start closed if in accordion view
+activate: function(event) { // Callback function if tab is switched
+var $tab = $(this);
+var $info = $('#tabInfo');
+var $name = $('span', $info);
+$name.text($tab.text());
+$info.show();
+}
+});
+$('#verticalTab').easyResponsiveTabs({
+type: 'vertical',
+width: 'auto',
+fit: true
+});
+});
+</script>
+<link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+<script src="js/owl.carousel.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#owl-demo").owlCarousel({
+
+		 autoPlay: 3000, //Set AutoPlay to 3 seconds
+		  autoPlay : true,
+		   navigation :true,
+
+		  items : 5,
+		  itemsDesktop : [640,4],
+		  itemsDesktopSmall : [414,3]
+
+		});
+
+	});
+</script>
+
+<!--/script-->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+</script>
+ <script type="text/javascript">
+						$(document).ready(function() {
+							/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear'
+					 		};
+							*/
+
+							$().UItoTop({ easingType: 'easeOutQuart' });
+
+						});
+					</script>
+<!--end-smooth-scrolling-->
+	<script src="js/bootstrap.js"></script>
+	<script src="data_js/fectch.js"></script>
+	<script type="text/javascript">
+	let moiveCotent = document.getElementById('moive_cotent');
+	let movieTitle = document.getElementById('movie_title');
+	let movietitleEn = document.getElementById('movie_title_en')
+	var haskey = window.location.search.substr(1).split('=')[1];
+	let genreValue = decodeURIComponent(haskey);
+	let loading = document.getElementById('loading');
+	let titleTag = document.querySelector('title');
+	console.log(genreValue);
+	var jsonp = fetch({
+		type: 'jsonp',
+		url: 'https://api.douban.com/v2/movie/subject/'+ genreValue +'',
+		// data:{
+		// 	"id":"" +genreValue +""
+		// },
+		timeout:10000
+	})
+	.init()
+	.then((data) => {
+		console.log(data);
+		loading.style.display = 'none';
+		drawingData(moiveCotent,data)
+		fetch({
+			type: 'jsonp',
+			url: 'https://api.douban.com/v2/movie/top250',
+			data:{
+				"title":"top250",
+				"start":0,
+			},
+		})
+		.init()
+		.then((data) => {
+			//console.log(data);
+			// drawingZxData1(data,owlDemo,data.subjects.length);
+			fetch({
+				type: 'jsonp',
+				url: 'https://api.douban.com/v2/movie/us_box',
+				data:{
+					"title":"豆瓣电影北美票房榜",
+					"start":0,
+				},
+			})
+			.init()
+			.then((data) => {
+			})
+		})
+	})
+	function drawingData(ele,data){
+		var str = '';
+		var castsStr = '';
+		if(data.casts.length){
+			for(var i=0;i<data.casts.length;i++){
+				castsStr += data.casts[i].name + ','
+			}
+		}else {
+			castsStr = '空 ';
+		}
+		titleTag.innerHTML = movieTitle.innerHTML = data.title;
+		movietitleEn.innerHTML = data.aka[0];
+		//console.log(castsStr.substr(0,castsStr.length-1));
+		str +=`<div class="single video_agile_player">
+
+			 <div class="video-grid-single-page-agileits">
+					<div data-video="f2Z65fobH2I" id="video" style = "width:100%"> <img src="${data.images.large}" alt="" class="img-responsive" /> </div>
+				</div>
+				 <h4 style="color:#000;font-size:16px;line-height:24px;" >${data.summary}</h4>
+		 </div>
+		<div class="single-agile-shar-buttons">
+				<h5 style="color:#02a388;border-bottom:1px solid #000;padding-bottom:2px;font-size:30px">简介:</h5>
+				<ul>
+					<li style="width:48%;float:left;margin-top:4px;">
+						<p>主演：${castsStr.substr(0,castsStr.length-1)}</p>
+					</li>
+					<li style="width:48%;float:left;margin-top:4px;">
+						<p>导演：${data.directors.length ? data.directors[0].name : '空'}</p>
+					</li>
+					<li style="width:48%;float:left;margin-top:4px;">
+						<p>上映时间：${data.year}</p>
+					</li>
+					<li style="width:48%;float:left;margin-top:4px;">
+						<p>类型：${data.genres[0]}</p>
+					</li>
+					<li style="width:48%;float:left;margin-top:4px;">
+						<p>地区：${data.countries[0]}</p>
+					</li>
+				</ul>
+		</div>`;
+		ele.innerHTML = str;
+	}
+
+	//点击弹出视频
+	let movieBtn = document.getElementById('movie_btn');
+	let moviesBox = document.querySelector('.movies_Box');
+	let shutMovieBtn = document.querySelector('#shut_movie_btn')
+	let exampleVideoFile = document.getElementById('example_video_1');
+
+	movieBtn.onclick = function(){
+		moviesBox.style.display = 'block';
+		exampleVideoFile.play();
+	}
+	shutMovieBtn.onclick = function(){
+		moviesBox.style.display = 'none';
+		exampleVideoFile.pause();
+	}
+
+	//点击类型和地区搜索跳转
+	let genreList = document.getElementById('genre_list');
+	let genreOptions = genreList.querySelectorAll('a');
+	for(let i=0;i<genreOptions.length;i++){
+		genreOptions[i].onclick = function () {
+			window.location.href = 'genre.html?model=' + encodeURIComponent(this.innerHTML);
+		}
+	}
+	let countriesList = document.getElementById('countries_list');
+	let countriesListOptions = countriesList.querySelectorAll('a');
+	for(let i=0;i<countriesListOptions.length;i++){
+		countriesListOptions[i].onclick = function () {
+			window.location.href = 'genre.html?countries=' + encodeURIComponent(this.innerHTML);
+		}
+	}
+	//电影搜索框
+	let cdSearch = document.getElementById('cd-search');
+	let searchText = cdSearch.querySelector('input');
+	window.onkeydown = function(e){
+		if(e.keyCode === 13){
+			if(searchText.value !== ''){
+				window.location.href = 'search.html?search=' + encodeURIComponent(searchText.value);
+			}else {
+				alert('请输入要搜索的电影名称')
+			}
+		}
+	}
+
+	</script>
+</body>
+</html>
